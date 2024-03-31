@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 
 
 import { environment } from 'src/environments/environment';
+import { ITheme } from './interfaces/theme';
+import { IPost } from './interfaces/post';
 const url = environment.apiURL;
 
 @Injectable({
@@ -13,10 +15,10 @@ export class ApiService {
   constructor(private httpClient:HttpClient) { }
 
   loadThemes () {
-    return this.httpClient.get(`${url}/themes`)
+    return this.httpClient.get<ITheme[]>(`${url}/themes`)
   }
 
   loadPosts (limit?:number) {
-    return this.httpClient.get(`${url}/posts/${limit ? `?limit=${limit}` : ''}`)
+    return this.httpClient.get<IPost[]>(`${url}/posts/${limit ? `?limit=${limit}` : ''}`)
   }
 }
