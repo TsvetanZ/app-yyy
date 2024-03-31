@@ -12,6 +12,7 @@ export class ThemeListComponent implements OnInit {
   constructor(private apiService:ApiService) { }
 
   themeLists: ITheme[] | null = null;
+  errFetchingData = false;
 
   ngOnInit(): void {
 
@@ -21,6 +22,7 @@ export class ThemeListComponent implements OnInit {
     },
 
     error: (err) => {
+      this.errFetchingData = true;
       console.error(err);
     } 
    });

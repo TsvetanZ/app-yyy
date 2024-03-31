@@ -1,5 +1,5 @@
-<main>
-    <div class="theme-title">
+   <div *ngIf="errFetchingData">Error loading theme...</div>
+    <app-loader *ngIf="!themeLists"></app-loader>
         
         <!-- theme component  -->
         <div *ngFor="let theme of themeLists"  class="theme-container">
@@ -23,5 +23,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</main>
+
